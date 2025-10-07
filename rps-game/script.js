@@ -1,0 +1,6 @@
+function getComputerChoice(){const c=["rock","paper","scissors"];const i=Math.floor(Math.random()*c.length);return c[i]}
+function getHumanChoice(){let c=prompt("Enter rock, paper, or scissors:").toLowerCase();while(!["rock","paper","scissors"].includes(c)){c=prompt("Invalid choice. Please enter rock, paper, or scissors:").toLowerCase()}return c}
+let humanScore=0,computerScore=0;
+function playRound(h,c){console.log(`You chose: ${h}`);console.log(`Computer chose: ${c}`);if(h===c){console.log("It's a tie!");return"tie"}if(h==="rock"&&c==="scissors"||h==="scissors"&&c==="paper"||h==="paper"&&c==="rock"){console.log(`You win! ${h} beats ${c}.`);humanScore++;return"human"}else{console.log(`You lose! ${c} beats ${h}.`);computerScore++;return"computer"}}
+function playGame(){humanScore=0;computerScore=0;for(let r=1;r<=3;r++){console.log(`--- Round ${r} ---`);const h=getHumanChoice();const c=getComputerChoice();playRound(h,c)}console.log("--- Final Results ---");console.log(`Your score: ${humanScore}`);console.log(`Computer score: ${computerScore}`);if(humanScore>computerScore){console.log("You win the game!")}else if(computerScore>humanScore){console.log("You lose the game!")}else{console.log("It's a tie overall!")}}
+playGame();
